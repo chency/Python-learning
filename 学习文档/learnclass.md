@@ -1,5 +1,6 @@
 # 学些类_class
     类首先得从作用域开始谈起
+    
 ## 作用域与命名空间_scope and namespace
 
 * 不同作用域中的访问顺序
@@ -8,49 +9,46 @@
       contains non-local, but also non-global names 
     - the next-to-last scope contains the current module’s global names 
     - the outermost scope (searched last) is the namespace containing built-in names
-    简单地说访问顺序是从最内层作用域开始查找的
-    如果里层作用域想要使用外层作用域的变量等，可以使用 _nonlocal id_
-     _global id_ 声明该变量属于最外层的全局作用域代码为例
+    
+    简单地说访问顺序是从最内层作用域开始查找的  
+    如果里层作用域想要使用外层作用域的变量等，可以使用 _nonlocal id_  
+    _global id_ 声明该变量属于最外层的全局作用域代码为例
      
-'''
-
-    def scope_test():
-        def do_local():
-            spam = "local spam"
-
-        def do_nonlocal():
-            nonlocal spam
-            spam = "nonlocal spam"
+    ```
     
-        def do_global():
-            global spam
-            spam = "global spam"
+        def scope_test():
+            def do_local():
+                spam = "local spam"
     
-        spam = "test spam"
-        do_local()
-        print("After local assignment:", spam)  # After local assignment: test spam
-        do_nonlocal()
-        print("After nonlocal assignment:", spam)   # After nonlocal assignment: nonlocal spam
-        do_global()
-        print("After global assignment:", spam) # After global assignment: nonlocal spam，该变量可以在scope_test作用域中找到
-    
-    scope_test()
-    print("In global scope:", spam) # In global scope: global spam，该变量只能在全局作用域中找到
-
-'''
+            def do_nonlocal():
+                nonlocal spam
+                spam = "nonlocal spam"
+        
+            def do_global():
+                global spam
+                spam = "global spam"
+        
+            spam = "test spam"
+            do_local()
+            print("After local assignment:", spam)  # After local assignment: test spam
+            do_nonlocal()
+            print("After nonlocal assignment:", spam)   # After nonlocal assignment: nonlocal spam
+            do_global()
+            print("After global assignment:", spam) # After global assignment: nonlocal spam，该变量可以在scope_test作用域中找到
+        
+        scope_test()
+        print("In global scope:", spam) # In global scope: global spam，该变量只能在全局作用域中找到
+    ```
 * 类的结构
 
-'''
-
-    class ClassName:
-        <statement-1>
-        .
-        .
-        .
-        <statement-N>
-
-'''
-
+    ```
+        class ClassName:
+            <statement-1>
+            .
+            .
+            .
+            <statement-N>
+    ```
     - 看文档貌似statement可以是if语句呀
     - class的构造函数为 def __init__(self):
     - 并不会重载，而是以最后一个有效
@@ -64,15 +62,14 @@
 
 * 类的继承
 
-'''
-
-    class DerivedClassName(BaseClassName):
-        <statement-1>
-        .
-        .
-        .
-        <statement-N>
-'''
+    ```
+        class DerivedClassName(BaseClassName):
+            <statement-1>
+            .
+            .
+            .
+            <statement-N>
+    ```
   
    - 继承的基类可以为module.baseclass类型的结构
    - 类的方法支持重写
@@ -83,7 +80,6 @@
 * 类的多重继承，没有多大的意义吧
 
 * 私有成员变量
-
     - 以双下划线开头的变量为私有变量
     
 
