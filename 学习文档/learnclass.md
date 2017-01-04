@@ -50,6 +50,7 @@
         <statement-N>
 
 '''
+
     - 看文档貌似statement可以是if语句呀
     - class的构造函数为 def __init__(self):
     - 并不会重载，而是以最后一个有效
